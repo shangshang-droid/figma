@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kirresha Ampong | Web Design Portfolio</title>
+  <meta name="description" content="Portfolio of Kirresha Ampong, a beginner web designer.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="bokeh" id="bokeh" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#home">Kirresha Ampong</a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-outline btn-small" href="mailto:kirreshaampong@gmail.com">Let's talk</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container">
+        <p class="label">Web designer</p>
+        <h1>I'm a beginner web designer learning by building real, usable websites.</h1>
+        <p class="lead">These are my first projects: redesigns and concepts that show how I plan, design and prototype.</p>
+        <div class="button-row">
+          <a class="btn btn-gold" href="#work">View my work</a>
+          <a class="btn btn-outline" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <h2>My first project</h2>
+
+        <article class="card">
+         
+          <div class="thumb" role="img" aria-label="Preview of my portfolio website">
+            <span class="thumb-dot thumb-dot-gold"></span>
+            <span class="thumb-dot thumb-dot-violet"></span>
+          </div>
+          <div class="card-body">
+            <p class="tags">UI · Prototype · Figma</p>
+            <h3>My portfolio website</h3>
+            <p>I designed my own portfolio as a beginner to practice layout, color and prototyping.</p>
+            <a class="btn btn-outline btn-small" href="#case-study">View case study</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="case-study">
+      <div class="container">
+        <p class="label">Case study</p>
+        <h2>My portfolio website</h2>
+        <p class="lead">I'm a beginner web designer, and I designed my own portfolio in Figma to practice layout, color and prototyping.</p>
+
+        <dl class="meta">
+          <div><dt>Client</dt><dd>Personal project</dd></div>
+          <div><dt>Role</dt><dd>Web designer</dd></div>
+          <!-- Change the timeline to how long it really took you -->
+          <div><dt>Timeline</dt><dd>2 weeks</dd></div>
+          <div><dt>Tools</dt><dd>Figma</dd></div>
+        </dl>
+
+        <div class="columns">
+          <div>
+            <h3>What was broken?</h3>
+            <p>As a beginner, I had no portfolio and no projects to show yet, so I had no way to share my skills.</p>
+          </div>
+          <div>
+            <h3>What did you do?</h3>
+            <p>As a beginner, I designed my own portfolio in Figma. I made five pages, chose a purple, gold and black style, and linked them into a clickable prototype.</p>
+          </div>
+          <div>
+            <h3>What changed?</h3>
+            <p>I now have a portfolio design with a clickable prototype, and I learned layout, color and prototyping.</p>
+          </div>
+        </div>
+
+        <h3 class="subhead">Process</h3>
+        <ol class="steps">
+          <li><strong>Plan</strong><span>I decided what pages and content my portfolio needs.</span></li>
+          <li><strong>Style</strong><span>I chose the colors, fonts and layout.</span></li>
+          <li><strong>Design</strong><span>I built the pages in Figma.</span></li>
+          <li><strong>Prototype</strong><span>I linked the pages so they work like a real site.</span></li>
+        </ol>
+
+        <h3 class="subhead">Results</h3>
+        <ul class="results">
+          <li><span class="big">5</span> pages designed</li>
+          <li><span class="big">1</span> clickable prototype</li>
+          <li><span class="big">1</span> screen size (desktop)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container">
+        <h2>About</h2>
+        <p class="about-text">I'm a beginner web designer. I'm learning Figma, layout and typography by building practice projects, and I'm looking for my first chance to work on a real website.</p>
+
+        <ul class="chips" aria-label="Skills">
+          <li>Figma</li>
+          <li>Wireframing</li>
+          <li>Layout &amp; grids</li>
+          <li>Typography</li>
+          <li>Color</li>
