@@ -1,79 +1,42 @@
-
-const lightLayer = document.getElementById("bokeh");
-const lightColors = ["#d4af37", "#f5c542", "#ffd97a", "#7b2fbe", "#a855f7", "#c084fc"];
-
-
-function random(min, max) {
-  return Math.random() * (max - min) + min;
+const views = document.querySelectorAll('.view');
+const links = document.querySelectorAll('#links a:not(.pill)');
+const nav = document.getElementById('links');
+const menuBtn = document.querySelector('.menu-btn');
+ 
+function show() {
+  const id = location.hash.slice(1) || 'home';
+  const target = document.getElementById(id) || document.getElementById('home');
+  views.forEach(v => v.classList.toggle('active', v === target));
+  links.forEach(a => a.classList.toggle('current', a.getAttribute('href') === '#' + target.id));
+  nav.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  window.scrollTo(0, 0);
 }
-
-
-function makeLight(size, opacity, blur, moves) {
-  const light = document.createElement("span");
-  light.style.width = size + "px";
-  light.style.height = size + "px";
-  light.style.left = random(-5, 100) + "%";
-  light.style.top = random(-5, 100) + "%";
-  light.style.background = lightColors[Math.floor(random(0, lightColors.length))];
-  light.style.opacity = opacity;
-  light.style.filter = "blur(" + blur + "px)";
-
-  if (moves) {
-    
-    light.style.setProperty("--dx", random(-60, 60) + "px");
-    light.style.setProperty("--dy", random(-60, 60) + "px");
-    light.style.setProperty("--t", random(14, 30) + "s");
-  } else {
-    light.style.animation = "none";
-  }
-
-  lightLayer.appendChild(light);
-}
-
-
-const isPhone = window.innerWidth < 700;
-const bigLights = isPhone ? 14 : 30;
-const sparkles = isPhone ? 40 : 100;
-
-for (let i = 0; i < bigLights; i++) {
-  makeLight(random(40, 180), random(0.1, 0.3), random(6, 14), true);
-}
-
-for (let i = 0; i < sparkles; i++) {
-  makeLight(random(2, 5), random(0.5, 1), 0.5, false);
-}
-
-const menuButton = document.getElementById("menu-toggle");
-const nav = document.getElementById("site-nav");
-
-menuButton.addEventListener("click", function () {
-  const isOpen = nav.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", isOpen);   
+window.addEventListener('hashchange', show);
+show();
+ 
+menuBtn.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
 });
-
-nav.addEventListener("click", function (event) {
-  if (event.target.tagName === "A") {
-    nav.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-  }
-});
-
-const sections = document.querySelectorAll("main section[id]");
-const navLinks = document.querySelectorAll(".site-nav a[href^='#']");
-
-const watcher = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      navLinks.forEach(function (link) {
-        const matches = link.getAttribute("href") === "#" + entry.target.id;
-        link.setAttribute("aria-current", matches ? "true" : "false");
-      });
-    }
-  });
-}, { rootMargin: "-40% 0px -55% 0px" });   
-
-sections.forEach(function (section) {
-  watcher.observe(section);
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
+ 
+// Bokeh background: soft purple and gold circles plus tiny sparks
+const bokeh = document.getElementById('bokeh');
+const colors = ['#8a3ff0', '#6a2cc4', '#b25cff', '#f5c32c'];
+for (let i = 0; i < 18; i++) {
+  const d = document.createElement('div');
+  const size = 60 + Math.random() * 180;
+  d.className = 'dot';
+  d.style.cssText = `width:${size}px;height:${size}px;left:${Math.random() * 100}%;top:${Math.random() * 100}%;
+    background:radial-gradient(circle,${colors[i % colors.length]}aa,transparent 70%);
+    animation-delay:${-Math.random() * 18}s;animation-duration:${14 + Math.random() * 12}s`;
+  bokeh.appendChild(d);
+}
+for (let i = 0; i < 40; i++) {
+  const s = document.createElement('div');
+  s.className = 'spark';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = Math.random() * 100 + '%';
+  s.style.opacity = 0.2 + Math.random() * 0.6;
+  bokeh.appendChild(s);
+}
